@@ -1,41 +1,74 @@
 import os
-import sys 
-os.system('cls')
+os.system("cls")
 
-1 == (print("Deposito - 1"))
-2 == print("Saque - 2")
-3 == print("Pix - 3")
-0 == print("Sair - 0")
+saldo = 0.0
 
-escolha = int(input("O que desejas:"))
+while True :
+    print("1 - Deposito")
+    print("2 - Saque")
+    print("3 - Extrato")
+    print("0 - Sair")
 
+    escolha = input("Escolha uma opção:")
 
-if escolha == 1:
-    deposito = input("Quanto você quer depositar:")
-    print("Você depositou", "R$",deposito, "com sucesso!!")
-elif escolha == 2:
-    saque = input("Quanto você deseja sacar:")
-    print("Você sacou","R$", saque, "com sucesso")
-
-if escolha == 3:
-    pix = str(input("Para quem deseja enviar:"))
-    valor = int(input(f"Quanto desejas enviar para {pix}:"))
-    os.system("cls")
-    1 == print("1 - SIM")
-    2 == print("2 - NÃO")
-
-confirmacao = int(input(f"Você deseja enviar R$ {valor} para {pix}:"))
-
-if confirmacao == 1:
-    print("Transação confirmada com sucesso")
-elif confirmacao == 2:
-    print("Transação cancelada")
+    if escolha == "1":
+        valor = float(input("Quanto deseja depositar?"))
+        print(f"Você deseja depositar {valor:.2f} na sua conta?")
+        print("1 - SIM")
+        print("2 - NÃO")
 
 
-elif escolha == 0:
-    print("PROGRAMA FINALIZADO")
-    sys.exit()
-else:
-   print ("opção invalida")
+        confirmacao = input("Escolha:")
+
+        if confirmacao == "1":
+            saldo += valor
+            print(f"R$ {valor:.2f} foi depositado com sucesso!")
+        else:
+            print(f"R$ {valor:.2f} não foi depositado")
+
+
+    if escolha == "2":
+        valor = float(input("Quanto deseja sacar?"))
+
+        if valor > saldo:
+              print("Saldo Indisponivel")
+        else:
+
+            print(f"Você deseja sacar {valor:.2f} na sua conta?")
+            print("1 - SIM")
+            print("2 - NÃO")
+
+            confirmacao = input("Escolha:")
+
+            if confirmacao == "1":
+                saldo -= valor
+                print(f"R$ {valor:.2f} foi sacado com sucesso!")
+            else:
+                print(f"R$ {valor:.2f} não foi sacado")
+
+
+    if escolha == "3":
+        print(f"O seu saldo atual => R$ {saldo:.2f}")
+
+    if escolha == "0":
+        print("Sistema encerrado")
+
+        break
+          
+
+          
+
+
+          
+
+        
+
+
+
+
+
+
+   
+
 
 
